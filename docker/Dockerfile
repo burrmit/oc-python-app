@@ -8,8 +8,9 @@
 # Then run the container using:
 #
 # docker run -i --rm -p 8081:8081 python/sample-basic
-####
-FROM rhel8/python-38
+# syntax=docker/dockerfile:1
+
+FROM python:3.8-slim-buster
 
 WORKDIR /app
 

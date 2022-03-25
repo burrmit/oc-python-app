@@ -13,6 +13,12 @@ FROM ubi8/python-39
 
 WORKDIR /projects
 
+# Add application sources to a directory that the assemble script expects them
+# and set permissions so that the container runs without root access
+USER 0
+RUN /usr/bin/fix-permissions /projects
+USER 1001
+
 RUN python3 -m venv venv
 RUN . venv/bin/activate
 

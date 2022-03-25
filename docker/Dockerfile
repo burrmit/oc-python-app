@@ -9,7 +9,7 @@
 #
 # docker run -i --rm -p 8081:8081 python/sample-basic
 ####
-FROM ubi8/python-39
+FROM rhel8/python-38
 
 WORKDIR /app
 

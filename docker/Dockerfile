@@ -25,6 +25,8 @@ RUN . venv/bin/activate
 
 # optimize image caching
 RUN pip3 install -r requirements.txt
+RUN pip3 uninstall jinja2
+RUN pip3 install jinja2
 RUN pip3 install --upgrade jinja2
 
 EXPOSE 8080

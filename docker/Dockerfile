@@ -11,11 +11,12 @@
 ####
 FROM ubi8/python-39
 
-WORKDIR /projects
+WORKDIR /app
 
 # Add application sources with correct permissions for OpenShift
 USER 0
-COPY . .
+ADD main.py main.py
+ADD requirements.txt requirements.txt
 RUN chown -R 1001:0 ./
 USER 1001
 
@@ -23,8 +24,7 @@ RUN python3 -m venv venv
 RUN . venv/bin/activate
 
 # optimize image caching
-COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-EXPOSE 8081
-CMD [ "python3 main.py"]
+EXPOSE 8080
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

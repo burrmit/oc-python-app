@@ -13,10 +13,9 @@ FROM ubi8/python-39
 
 WORKDIR /projects
 
-# Add application sources to a directory that the assemble script expects them
-# and set permissions so that the container runs without root access
+# Add application sources with correct permissions for OpenShift
 USER 0
-RUN /usr/bin/fix-permissions /projects
+RUN chown -R 1001:0 ./
 USER 1001
 
 RUN python3 -m venv venv

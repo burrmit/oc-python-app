@@ -15,6 +15,7 @@ WORKDIR /projects
 
 # Add application sources with correct permissions for OpenShift
 USER 0
+COPY . .
 RUN chown -R 1001:0 ./
 USER 1001
 
@@ -24,8 +25,6 @@ RUN . venv/bin/activate
 # optimize image caching
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-
-COPY . .
 
 EXPOSE 8081
 CMD [ "python3 main.py"]

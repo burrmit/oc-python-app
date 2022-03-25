@@ -24,7 +24,8 @@ RUN python3 -m venv venv
 RUN . venv/bin/activate
 
 # optimize image caching
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
+RUN pip3 install --upgrade jinja2
 
 EXPOSE 8080
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

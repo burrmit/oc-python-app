@@ -10,7 +10,7 @@
 # docker run -i --rm -p 8081:8081 python/sample-basic
 # syntax=docker/dockerfile:1
 
-FROM python:3.8-slim-buster
+FROM ubi8/python-39
 
 WORKDIR /app
 
@@ -25,8 +25,7 @@ RUN python3 -m venv venv
 RUN . venv/bin/activate
 
 # optimize image caching
-RUN pip3 install -r requirements.txt
-RUN pip3 install jinja2
+RUN pip3 install Flask
 
 EXPOSE 8080
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

@@ -27,5 +27,5 @@ RUN . venv/bin/activate
 # optimize image caching
 RUN pip3 install Flask
 
-EXPOSE 8080
+EXPOSE 5000
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

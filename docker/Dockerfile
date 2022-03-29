@@ -16,8 +16,7 @@ WORKDIR /app
 
 # Add application sources with correct permissions for OpenShift
 USER 0
-ADD app.py app.py
-ADD requirements.txt requirements.txt
+COPY . .
 RUN chown -R 1001:0 ./
 USER 1001
 
